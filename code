@@ -1,0 +1,19 @@
+class Solution {
+  public:
+    pair<Node *, Node *> splitList(struct Node *head) {
+        struct Node *slow=head;
+        struct Node *fast=head->next;
+        while(fast->next!=head){
+            fast=fast->next;
+            if(fast->next!=head){
+                fast=fast->next;
+            }
+            slow =slow->next;
+        }
+        Node *h2=slow->next;
+        slow->next=head;
+        fast->next=h2;
+        pair<Node *, Node*>ans=make_pair(head,h2);
+        return ans;
+    }
+};
